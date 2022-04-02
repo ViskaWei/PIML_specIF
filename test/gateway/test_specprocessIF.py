@@ -12,7 +12,7 @@ class TestBaseSpecProcessIF(TestBase):
     def test_StellarSpecProcessIF(self):
 
         PIF = StellarSpecProcessIF()
-        PIF.setup(self.PARAM)
+        PIF.setup(self.D.PARAM)
         self.assertIsNotNone(PIF.OP_DATA.keys())
         self.assertIsNotNone(PIF.OP_MODEL.keys())
         self.assertIsNotNone(PIF.OP_PARAM.keys())
