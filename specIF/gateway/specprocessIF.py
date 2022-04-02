@@ -2,7 +2,7 @@ from abc import abstractmethod
 from spec.crust.data.basespec import StellarSpec
 from spec.crust.process.stellarspecprocess import StellarSpecProcess
 from baseIF.gateway.baseprocessIF import ProcessIF
-from .specloaderIF import SpecLoaderIF, SkyLoaderIF
+from .specloaderIF import SpecLoaderIF, WaveSkyLoaderIF
 
 
 class BaseSpecProcessIF(ProcessIF):
@@ -14,20 +14,19 @@ class BaseSpecProcessIF(ProcessIF):
 class StellarSpecProcessIF(BaseSpecProcessIF):
     def __init__(self) -> None:
         super().__init__()
-        self.Loader = SpecLoaderIF()
-        self.Process = StellarSpecProcess()
-        self.Storer = None
+        self.Loader   = SpecLoaderIF()
+        self.Process  = StellarSpecProcess()
+        self.Storer   = None
 
     def set_data(self, DATA_PARAM):
-        self.SKY_PATH = DATA_PARAM["SKY_PATH"]
-        self.Sky = WaveSkyLoaderIF().load(self.SKY_PATH)
-        self.OP_DATA = {"Sky": self.Sky}
+        self.wavesky  = WaveSkyLoaderIF(DATA_PARAM["wavesky"])
+        self.OP_DATA  = {"wavesky": self.wavesky}
 
     def set_param(self, OP_PARAM):
         self.OP_PARAM = self.paramIF(OP_PARAM)
     
-    def set_model(self, MODEL_TYPES):
-        self.OP_MODEL = MODEL_TYPES
+    def set_model(self, MODEL_PARAM):
+        self.OP_MODEL = MODEL_PARAM
 
     def interact_on_Spec(self, PARAMS, Spec: StellarSpec):
         self.setup(PARAMS)
@@ -35,6 +34,5 @@ class StellarSpecProcessIF(BaseSpecProcessIF):
 
     def paramIF(self, PARAMS):
         #TODO create class later
-        
         return PARAMS
 
