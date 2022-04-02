@@ -1,1 +1,1 @@
-modules/PIML_spec/spec
+modules/PIMLspec/spec
