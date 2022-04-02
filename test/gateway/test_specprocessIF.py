@@ -10,8 +10,15 @@ class TestBaseSpecProcessIF(TestCase):
         pass
 
     def test_StellarSpecProcessIF(self):
-        PARAMS = 
-        
+        PARAMS = {
+            "data"
+        }
+            MODEL = {
+        "ResTune" : {"type": "Alex", "param": {"step": 10, "res":10000}},
+        }
+    PARAM = {"arm": "RedM"}
+    DATA  = {"wavesky": "/home/swei20/PIML/PIML_spec/test/testdata/wavesky.npy"}
+
         PIF = StellarSpecProcessIF()
         PIF.setup(PARAMS)
         # self.assertIsNone(np.testing.assert_array_equal(checkWave, self.D.wave))
@@ -21,3 +28,4 @@ class TestBaseSpecProcessIF(TestCase):
 
 
     
+

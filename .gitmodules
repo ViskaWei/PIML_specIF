@@ -1,6 +1,3 @@
-[submodule "modules/PIML_spec"]
-	path = modules/PIML_spec
-	url = https://github.com/ViskaWei/PIML_spec.git
 [submodule "modules/PIML_baseIF"]
 	path = modules/PIML_baseIF
 	url = https://github.com/ViskaWei/PIML_baseIF.git
