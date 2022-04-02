@@ -1,6 +1,6 @@
 from abc import abstractmethod
-from spec.crust.data.basespec import StellarSpec
-from spec.crust.process.stellarspecprocess import StellarSpecProcess
+from spec.crust.data.spec import StellarSpec
+from spec.crust.process.specprocess import StellarSpecProcess
 from baseIF.gateway.baseprocessIF import ProcessIF
 from .specloaderIF import SpecLoaderIF, WaveSkyLoaderIF
 
