@@ -28,10 +28,6 @@ class StellarSpecProcessIF(BaseSpecProcessIF):
     def set_model(self, MODEL_PARAM):
         self.OP_MODEL = MODEL_PARAM
 
-    def interact_on_Spec(self, PARAMS, Spec: StellarSpec):
-        self.setup(PARAMS)
-        self.interact_on_Object(Spec)
-
     def paramIF(self, PARAMS):
         #TODO create class later
         return PARAMS
