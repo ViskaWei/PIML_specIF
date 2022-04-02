@@ -4,3 +4,6 @@
 [submodule "modules/PIMLspec"]
 	path = modules/PIMLspec
 	url = https://github.com/ViskaWei/PIMLspec.git
+[submodule "modules/PIMLbase"]
+	path = modules/PIMLbase
+	url = https://github.com/ViskaWei/PIMLbase.git
