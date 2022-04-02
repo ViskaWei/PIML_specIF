@@ -1,12 +1,12 @@
 import os
 from abc import ABC, abstractmethod
 from baseIF.gateway.baseloaderIF import DataLoaderIF, DictLoaderIF, ObjectLoaderIF
-from spec.crust.data.basespec import StellarSpec
+from spec.crust.data.spec import StellarSpec
 
 class SpecLoaderIF(ObjectLoaderIF):
     """ class for loading Spec. """
     def set_param(self, PARAM):
-        self.loader = DictLoaderIF.from_param(PARAM["SPEC_PATH"])
+        self.loader = DictLoaderIF(PARAM["SPEC_PATH"])
 
     def load(self):
         flux = self.loader.load_arg("flux")
@@ -21,4 +21,4 @@ class SkyLoaderIF(DictLoaderIF):
 
 class WaveSkyLoaderIF(DataLoaderIF):
     def load(self):
-        super().load()
+        return super().load()

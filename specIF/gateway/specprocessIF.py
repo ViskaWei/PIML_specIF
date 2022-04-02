@@ -4,14 +4,7 @@ from spec.crust.process.specprocess import StellarSpecProcess
 from baseIF.gateway.baseprocessIF import ProcessIF
 from .specloaderIF import SpecLoaderIF, WaveSkyLoaderIF
 
-
-class BaseSpecProcessIF(ProcessIF):
-    """ Base class for process interface for Spec object only. """
-    @abstractmethod
-    def interact_on_Spec(self, param, Spec: StellarSpec):
-        pass
-
-class StellarSpecProcessIF(BaseSpecProcessIF):
+class StellarSpecProcessIF(ProcessIF):
     def __init__(self) -> None:
         super().__init__()
         self.Loader   = SpecLoaderIF()
@@ -19,7 +12,7 @@ class StellarSpecProcessIF(BaseSpecProcessIF):
         self.Storer   = None
 
     def set_data(self, DATA_PARAM):
-        self.wavesky  = WaveSkyLoaderIF(DATA_PARAM["wavesky"])
+        self.wavesky  = WaveSkyLoaderIF(DATA_PARAM["WSKY_PATH"]).load()
         self.OP_DATA  = {"wavesky": self.wavesky}
 
     def set_param(self, OP_PARAM):
@@ -32,3 +25,6 @@ class StellarSpecProcessIF(BaseSpecProcessIF):
         #TODO create class later
         return PARAMS
 
+    def interact_on_Object(self, Spec: StellarSpec):
+        self.Process.set_process(self.OP_PARAM, self.OP_MODEL, self.OP_DATA)
+        self.Process.start(Spec)
